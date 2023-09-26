@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use((req, res) => {
-    req.end("я работаю");
+    res.end("я работаю");
 
 })
 
