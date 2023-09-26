@@ -2,14 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors")
 
+const { signup } = require("./controllers/user")
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use((req, res) => {
-    res.end("я работаю");
-
-})
+app.post("signup/", signup);
 
 async function main() {
     try{
