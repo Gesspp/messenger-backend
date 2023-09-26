@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use((req, res) => {
+    req.end("я работаю");
+
+})
 
 async function main() {
     try{
