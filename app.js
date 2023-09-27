@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 const cors = require("cors")
 
 const { signup } = require("./controllers/user")
+const { signin } = require("./controllers/user")
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.post("/signup", signup);
+app.post("/signin", signin)
 
 async function main() {
     try{
