@@ -32,7 +32,9 @@ const signin = async (req, res) => {
     }
     const user = existingEmail ? existingEmail : existingNickname;
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if ((login == user.email || login == user.nickname) && isPasswordValid) {
+    if (!isPasswordValid) {
+        return res.status(400).json({error: "incorrect password"})
+    } else {
         return res.status(201).json({message: "you successfully signed in the account"})
     }
 }
