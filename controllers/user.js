@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 const User = require("../models/user");
 
+
 const signup = async (req, res) => {
     if (!req.body) return res.status(401).json({error: "no body"})
 
