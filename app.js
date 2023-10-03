@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors")
+const userRouter = require("./routes/user")
 
-const { signup } = require("./controllers/user")
-const { signin } = require("./controllers/user")
+const { signup, signin } = require("./controllers/user")
 
 const app = express();
 app.use(cors());
@@ -11,6 +11,8 @@ app.use(express.json());
 
 app.post("/signup", signup);
 app.post("/signin", signin);
+
+app.use(userRouter);
 
 async function main() {
     try{

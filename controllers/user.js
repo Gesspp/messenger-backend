@@ -45,7 +45,13 @@ const signin = async (req, res) => {
     return res.status(201).json({token})
 }
 
+const all = async (req, res) => {
+    const users = await User.find();
+    return res.status(200).json({users});
+}
+
 module.exports = {
     signup,
-    signin
+    signin,
+    all
 }
