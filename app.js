@@ -12,7 +12,7 @@ app.use(express.json());
 app.post("/signup", signup);
 app.post("/signin", signin);
 
-app.use(userRouter);
+app.use("/users", userRouter);
 
 async function main() {
     try{
