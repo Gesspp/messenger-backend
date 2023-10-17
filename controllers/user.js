@@ -11,6 +11,8 @@ const signup = async (req, res) => {
     const existingNickname = await User.findOne({nickname});
     const existingEmail = await User.findOne({email});
 
+    console.log("Сейчас пытается войти пользователь с ником и почтой", nickname, email);
+
     if (existingEmail || existingNickname) {
         return res.status(400).json({error: "same nickname or email is existing"})
     }
