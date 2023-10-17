@@ -7,6 +7,8 @@ const User = require("../models/user");
 const signup = async (req, res) => {
     if (!req.body) return res.status(401).json({error: "no body"})
 
+    console.log("Тело запроса", req.body)
+
     const { nickname, email, password } = req.body;
     const existingNickname = await User.findOne({nickname});
     const existingEmail = await User.findOne({email});
