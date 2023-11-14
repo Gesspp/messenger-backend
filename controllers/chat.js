@@ -15,7 +15,7 @@ const add = async (req, res) => {
     return res.status(201).json({message: "chat successfully created"})
 }
 
-const getChat = async (req, res) => {
+const all = async (req, res) => {
     const id = req.user.id;
     const owner = await User.findById(id);
 
@@ -26,5 +26,5 @@ const getChat = async (req, res) => {
 
 module.exports = {
     add,
-    getChat
+    all
 }
