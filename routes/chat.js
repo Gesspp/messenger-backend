@@ -5,6 +5,6 @@ const chat = require("../models/chat");
 const chatRouter = Router();
 
 chatRouter.post("/add", add);
-chatRouter.post("/", all)
+chatRouter.post("/", all);
 
 module.exports = chatRouter;
