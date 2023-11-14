@@ -1,0 +1,20 @@
+const User = require("../models/user");
+const Chat = require("../models/chat");
+
+
+const add = async (req, res) => {
+    if (!req.body) return res.status(401).json({error: "no body"})
+
+    const id = req.user.id;
+    const owner = await User.findById(id);
+    const { title } = req.body;
+
+    const chat = new Chat({title, owner})
+    await chat.save()
+
+    return res.status(201).json({message: "chat successfully created"})
+}
+
+module.exports = {
+    add
+}

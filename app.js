@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors")
 // const io = require("socket.io");
 const userRouter = require("./routes/user")
+const chatRouter = require("./routes/chat")
 const { auth } = require("./middlewares/auth")
 
 const { signup, signin } = require("./controllers/user")
@@ -17,6 +18,8 @@ app.post("/signin", signin);
 app.use(auth);
 
 app.use("/users", userRouter);
+
+app.use("/chats", chatRouter);
 
 // let socket = new WebSocket("");
 
