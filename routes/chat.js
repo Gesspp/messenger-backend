@@ -7,4 +7,4 @@ const chatRouter = Router();
 chatRouter.post("/add", add);
 chatRouter.get("/", all);
 
-module.exports = chatRouter;
+module.exports = chatRouter;к

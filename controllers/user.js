@@ -52,6 +52,12 @@ const all = async (req, res) => {
     return res.status(200).json({users});
 }
 
+const search = async (req, res) => {
+    const { q } = req.body;
+    const users = await User.find({nickname : {$regex : "^" + q}});
+    return res.status(200).json({users});
+}
+
 const me = async (req, res) => {
     const id = req.user.id;
     const user = await User.findById(id);
@@ -62,5 +68,6 @@ module.exports = {
     signup,
     signin,
     all,
+    search,
     me
 }
