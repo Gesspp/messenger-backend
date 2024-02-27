@@ -1,7 +1,7 @@
 const userHandlers = require('./handlers/user.handlers.js');
 const messageHandlers = require('./handlers/message.handlers.js');
 
-export default function onConnection(io, socket) {
+module.exports = function onConnection(io, socket) {
   // извлекаем идентификатор комнаты и имя пользователя
   const { roomId, userName } = socket.handshake.query
 

@@ -4,7 +4,7 @@ import onError from '../onError.js'
 // "хранилище" для сообщений
 const messages = {}
 
-export default function messageHandlers(io, socket) {
+module.exports =  function messageHandlers(io, socket) {
   // извлекаем идентификатор комнаты
   const { chatId } = socket
 

@@ -1,6 +1,6 @@
 const users = {}
 
-export default function userHandlers(io, socket) {
+module.exports =  function userHandlers(io, socket) {
   // извлекаем идентификатор комнаты и имя пользователя из объекта сокета
   const { chatId, userId } = socket
 
