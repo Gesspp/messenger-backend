@@ -1,5 +1,5 @@
 const { Message } = require('../../models/message.js');
-// import onError from '../../utils/onError.js'
+import onError from '../onError.js'
 
 // "хранилище" для сообщений
 const messages = {}
