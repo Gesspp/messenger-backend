@@ -25,7 +25,7 @@ app.use("/chats", chatRouter);
 
 const server = createServer(app)
 const io = new Server(server, {
-  cors: ALLOWED_ORIGIN,
+  cors: "http://localhost:5173",
   serveClient: false
 })
 
