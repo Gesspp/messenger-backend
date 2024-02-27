@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors")
-// const io = require("socket.io");
+const { Server } = require("socket.io");
+const { onConnection } = require("sockets")
 const userRouter = require("./routes/user")
 const chatRouter = require("./routes/chat")
 const { auth } = require("./middlewares/auth")
+const server = createServer(app)
 
 const { signup, signin } = require("./controllers/user")
 
@@ -23,6 +25,14 @@ app.use("/chats", chatRouter);
 
 // let socket = new WebSocket("");
 
+const io = new Server(server, {
+  cors: ALLOWED_ORIGIN,
+  serveClient: false
+})
+
+io.on('connection', (socket) => {
+  onConnection(io, socket)
+})
 
 async function main() {
     try{
@@ -35,10 +45,3 @@ async function main() {
 }
 
 main()
-
-// io.on("connection", (socket) => {
-//     socket.on("message", (message) => {
-//         console.log(message)
-//     })
-//     socket.emit("message", "Hello!")
-// })
