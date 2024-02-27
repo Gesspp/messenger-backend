@@ -7,7 +7,6 @@ const onConnection = require("./sockets/onConnection")
 const userRouter = require("./routes/user")
 const chatRouter = require("./routes/chat")
 const { auth } = require("./middlewares/auth")
-const server = createServer(app)
 
 const { signup, signin } = require("./controllers/user")
 
@@ -24,8 +23,7 @@ app.use("/users", userRouter);
 
 app.use("/chats", chatRouter);
 
-// let socket = new WebSocket("");
-
+const server = createServer(app)
 const io = new Server(server, {
   cors: ALLOWED_ORIGIN,
   serveClient: false
