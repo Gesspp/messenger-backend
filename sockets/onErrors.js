@@ -1,4 +1,4 @@
-export default function onError(err, req, res, next) {
+module.exports =  function onError(err, req, res, next) {
     console.log(err)
   
     // если имеется объект ответа
