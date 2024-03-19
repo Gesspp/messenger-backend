@@ -27,7 +27,7 @@ const all = async (req, res) => {
 
 const connect = async (req, res) => {
     console.log("Socket successfully created");
-    io.on('connection', (socket) => {
+    req.io.on('connection', (socket) => {
         onConnection(io, socket)
       })
     req.io.emit("new-message", { content: req.body.content });
