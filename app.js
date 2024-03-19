@@ -14,15 +14,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/signup", signup);
-app.post("/signin", signin);
-
-app.use(auth);
-
-app.use("/users", userRouter);
-
-app.use("/chats", chatRouter);
-
 const server = createServer(app)
 const io = new Server(server, {
   cors: "*",
@@ -32,6 +23,16 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   onConnection(io, socket)
 })
+
+app.post("/signup", signup);
+app.post("/signin", signin);
+
+app.use(auth);
+
+app.use("/users", userRouter);
+
+app.use("/chats", chatRouter);
+
 
 async function main() {
     try{
