@@ -5,7 +5,7 @@ module.exports = function onConnection(io, socket) {
   // извлекаем идентификатор комнаты и имя пользователя
   const { roomId, userName } = socket.handshake.query
 
-  console.log(roomId)
+  console.log("roomId", roomId)
   // записываем их в объект сокета
   socket.roomId = roomId
   socket.userName = userName

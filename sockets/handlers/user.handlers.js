@@ -8,7 +8,7 @@ module.exports =  function userHandlers(io, socket) {
   if (!users[chatId]) {
     users[chatId] = []
   }
-
+  
   // утилита для обновления списка пользователей
   const updateUserList = () => {
     // сообщение получают только пользователи, находящиеся в комнате
