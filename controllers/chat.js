@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Chat = require("../models/chat");
+const onConnection = require("../sockets/onConnection")
 
 
 const add = async (req, res) => {
@@ -24,7 +25,17 @@ const all = async (req, res) => {
     return res.status(200).json({chats})
 }
 
+const connect = async (req, res) => {
+    console.log("Socket successfully created");
+    io.on('connection', (socket) => {
+        onConnection(io, socket)
+      })
+    req.io.emit("new-message", { content: req.body.content });
+    return res.send({ success: true });
+}
+
 module.exports = {
     add,
-    all
+    all,
+    connect
 }

@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const cors = require("cors")
 const { createServer }  = require("http");
 const { Server } = require("socket.io");
-const onConnection = require("./sockets/onConnection")
 const userRouter = require("./routes/user")
 const chatRouter = require("./routes/chat")
 const { auth } = require("./middlewares/auth")
@@ -20,9 +19,10 @@ const io = new Server(server, {
   serveClient: false
 })
 
-io.on('connection', (socket) => {
-  onConnection(io, socket)
-})
+app.use((req, res, next) => {
+  req.io = io;
+  return next();
+});
 
 app.post("/signup", signup);
 app.post("/signin", signin);
